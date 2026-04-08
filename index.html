@@ -71,7 +71,7 @@
             formData.append('category', document.getElementById('category').value);
 
             try {
-                const response = await fetch('/edit-metadata/', {
+                const response = await fetch('/metaedit/edit-metadata/', {
                     method: 'POST',
                     body: formData
                 });
@@ -90,7 +90,7 @@
                 }
             } catch (err) {
                 console.error(err);
-                alert("Verifique se o backend está rodando em http://127.0.0.1:8000");
+                alert("Erro ao conectar com o servidor");
             } finally {
                 btn.disabled = false;
                 btn.innerText = "Processar e Baixar";

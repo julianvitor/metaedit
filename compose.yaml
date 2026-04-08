@@ -5,7 +5,7 @@ services:
     build: .
     container_name: docx-metadata
     ports:
-      - "8000:8000"
+      - "54783:8000"
     volumes:
       - .:/app
     restart: always
