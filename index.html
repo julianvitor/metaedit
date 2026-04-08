@@ -73,16 +73,11 @@
 
 
             try {
-                // detectar ambiente
                 const baseURL = window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost"
-                    ? "http://127.0.0.1:8000"
-                    : ""; // vazio significa mesmo host (EC2 via Nginx)
-
-                const response = await fetch(`${baseURL}/edit-metadata/`, {
-                    method: 'POST',
-                    body: formData
-                });
-
+                    ? "http://127.0.0.1:8000"  // dev local
+                    : "";  // EC2 via Nginx (mesmo host)
+                const response = await fetch(`${baseURL}/metaedit/edit-metadata/`, { method: 'POST', body: formData });
+                
                 if (response.ok) {
                     const blob = await response.blob();
                     const url = window.URL.createObjectURL(blob);
