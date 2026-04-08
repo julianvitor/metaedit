@@ -69,9 +69,16 @@
             formData.append('keyword', document.getElementById('keyword').value);
             formData.append('description', document.getElementById('description').value);
             formData.append('category', document.getElementById('category').value);
+            
+
 
             try {
-                const response = await fetch('/metaedit/edit-metadata/', {
+                // detectar ambiente
+                const baseURL = window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost"
+                    ? "http://127.0.0.1:8000"
+                    : ""; // vazio significa mesmo host (EC2 via Nginx)
+
+                const response = await fetch(`${baseURL}/edit-metadata/`, {
                     method: 'POST',
                     body: formData
                 });
